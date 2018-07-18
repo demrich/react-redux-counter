@@ -5,13 +5,12 @@ function Counter(props) {
     console.log('render', props)
     return(
         <div>
-            <h1>
-                Hi, I'm a Counter!
-                <p>Count: {props.count} </p>
-                <button onClick={props.onIncrementClick}>increment</button>
-                <button onClick={props.onReductionClick}>reduction</button>
+            <h1>Hi, I'm a Counter!</h1>
+            <p>Count: {props.count} </p>
+            <button onClick={props.onReductionClick}>-</button>&nbsp;
+            <button onClick={props.onResetClick}>0</button>&nbsp;
+            <button onClick={props.onIncrementClick}>+</button>
 
-            </h1>
         </div>
     )
 }
@@ -28,13 +27,18 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch){
     return {
         onIncrementClick: () => {
-            console.log('clickin bitchin')
+            console.log('goin up')
             const action = {type: 'INCREMENT'}
             dispatch(action)
         },
         onReductionClick: () => {
-            console.log('clickin bitchin')
+            console.log('goin down')
             const action = {type: 'REDUCTION'}
+            dispatch(action)
+        },
+        onResetClick: () => {
+            console.log('back to zero')
+            const action = {type: 'RESET'}
             dispatch(action)
         }
     }
