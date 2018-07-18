@@ -9,6 +9,8 @@ function Counter(props) {
                 Hi, I'm a Counter!
                 <p>Count: {props.count} </p>
                 <button onClick={props.onIncrementClick}>increment</button>
+                <button onClick={props.onReductionClick}>reduction</button>
+
             </h1>
         </div>
     )
@@ -24,10 +26,15 @@ function mapStateToProps(state) {
 
 ///Third Event (after click)
 function mapDispatchToProps(dispatch){
-    return{
+    return {
         onIncrementClick: () => {
             console.log('clickin bitchin')
             const action = {type: 'INCREMENT'}
+            dispatch(action)
+        },
+        onReductionClick: () => {
+            console.log('clickin bitchin')
+            const action = {type: 'REDUCTION'}
             dispatch(action)
         }
     }
