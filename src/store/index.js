@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 
 const initialState = {
     count: 0
@@ -7,7 +7,6 @@ const initialState = {
 /// First Event
 const reducer = (state = initialState, action) => {
     console.log('reducer running', action);
-
     switch(action.type){
 
         case 'INCREMENT':
@@ -17,8 +16,7 @@ const reducer = (state = initialState, action) => {
             return Object.assign({}, state, { count: state.count - 1 });
 
         case "RESET":
-            return Object.assign({}, state, { count: 0});
-
+            return Object.assign({}, state, { count: state.count - state.count});
 
         default:
              return state;  
@@ -26,6 +24,6 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 export default store;
